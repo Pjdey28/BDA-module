@@ -67,12 +67,12 @@ const Login = () => {
         <button className="bg-blue-600 text-white w-full py-3 rounded">
           Login
         </button>
-
-      </form>
-        <p className="text-center text-gray-600 mt-4">
+          <p className="text-center text-gray-600 mt-4">
           Use email: admin@gmail.com and password: 123456 for admin access
+          <br />
           Use email: amit@gmail.com and password: 123456 for employee access
         </p>
+      </form>
     </div>
   );
 };
