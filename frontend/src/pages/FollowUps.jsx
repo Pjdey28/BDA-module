@@ -9,7 +9,9 @@ import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 
 const FollowUps = () => {
-
+  const user = JSON.parse(
+    localStorage.getItem('user')
+  );
   const [followUps, setFollowUps] =
     useState([]);
 
@@ -33,7 +35,23 @@ const FollowUps = () => {
       const leadRes =
         await API.get('/leads');
 
-      setFollowUps(followRes.data);
+      if (user.role === 'employee') {
+
+        const filteredFollowUps =
+            followRes.data.filter(
+            (item) =>
+                item.lead?.assignedTo === user.id
+                ||
+                item.lead?.assignedTo?._id === user.id
+            );
+
+        setFollowUps(filteredFollowUps);
+
+        } else {
+
+        setFollowUps(followRes.data);
+
+        }
 
       setLeads(leadRes.data);
 

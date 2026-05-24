@@ -14,6 +14,7 @@ import EmployeeRoute from './components/EmployeeRoute';
 import CreateEmployee from './pages/CreateEmployee';
 import MyLeads from './pages/MyLeads';
 import LeadDetails from './pages/LeadDetails';
+import MyPerformance from './pages/MyPerformance';
 function App() {
 
   return (
@@ -104,6 +105,14 @@ function App() {
             <ProtectedRoute>
               <LeadDetails />
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-performance"
+          element={
+            <EmployeeRoute>
+              <MyPerformance />
+            </EmployeeRoute>
           }
         />
       </Routes>

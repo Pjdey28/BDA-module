@@ -23,14 +23,29 @@ const statuses = [
 const Pipeline = () => {
 
   const [leads, setLeads] = useState([]);
-
+  const user = JSON.parse(
+    localStorage.getItem('user')
+  );
   const fetchLeads = async () => {
 
     try {
 
       const res = await API.get('/leads');
+      if (user.role === 'employee') {
 
-      setLeads(res.data);
+        const filteredLeads =
+            res.data.filter(
+            (lead) =>
+                lead.assignedTo?._id === user.id
+            );
+
+        setLeads(filteredLeads);
+
+        } else {
+
+        setLeads(res.data);
+
+        }
 
     } catch (error) {
       console.log(error);
@@ -71,8 +86,11 @@ const Pipeline = () => {
       <div className="ml-64 p-6">
 
         <h1 className="text-3xl font-bold mb-8">
-          Lead Pipeline
+          Sales Board
         </h1>
+        <p className="text-gray-600 mb-6">
+          Drag and drop leads to update their status
+        </p>
 
         <DragDropContext onDragEnd={onDragEnd}>
 

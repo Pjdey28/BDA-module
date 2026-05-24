@@ -64,10 +64,14 @@ const Sidebar = () => {
             className="hover:bg-slate-800 p-3 rounded">
                 My Leads
             </Link>
+            <Link to="/my-performance"
+            className="hover:bg-slate-800 p-3 rounded">
+                My Performance
+            </Link>
 
             <Link to="/pipeline"
             className="hover:bg-slate-800 p-3 rounded">
-                Pipeline
+                Sales Board
             </Link>
 
             <Link to="/followups"
