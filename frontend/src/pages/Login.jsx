@@ -69,7 +69,10 @@ const Login = () => {
         </button>
 
       </form>
-
+        <p className="text-center text-gray-600 mt-4">
+          Use email: admin@gmail.com and password: 123456 for admin access
+          Use email: amit@gmail.com and password: 123456 for employee access
+        </p>
     </div>
   );
 };
